@@ -22,9 +22,14 @@ class ChatAdapter() :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
-        if (position % 2 == 0) {
-            holder.itemView.setBackgroundColor(Color.GRAY)
+
+        val drawable = if (position % 2 == 0) {
+            holder.itemView.context.getDrawable(R.drawable.background_item)
+        } else {
+            holder.itemView.context.getDrawable(R.drawable.bg_item)
         }
+
+        holder.itemView.background = drawable
         val layoutParams = holder.itemView.layoutParams as ViewGroup.MarginLayoutParams
 
         if (position % 2 != 0) {
